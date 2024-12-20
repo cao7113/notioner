@@ -23,3 +23,5 @@ notioner-*.tar
 /tmp/
 
 .env*
+.lexical
+.elixir-tools

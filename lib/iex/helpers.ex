@@ -12,7 +12,7 @@ defmodule IexHelpers do
     |> Jason.decode!()
   end
 
-  def config do
+  def iex_config do
     IEx.configuration()
   end
 

@@ -1,0 +1,200 @@
+{
+  "archived": false,
+  "cover": null,
+  "created_by": {
+    "id": "a1a07517-b528-439d-91d0-50a809b1a23f",
+    "object": "user"
+  },
+  "created_time": "2019-11-13T05:33:00.000Z",
+  "description": [
+    {
+      "annotations": {
+        "bold": false,
+        "code": false,
+        "color": "default",
+        "italic": false,
+        "strikethrough": false,
+        "underline": false
+      },
+      "href": null,
+      "plain_text": "My reading list",
+      "text": {
+        "content": "My reading list",
+        "link": null
+      },
+      "type": "text"
+    }
+  ],
+  "icon": {
+    "emoji": "📚",
+    "type": "emoji"
+  },
+  "id": "408b771f-00ff-409e-8bca-b2c6c609b2a9",
+  "in_trash": false,
+  "is_inline": false,
+  "last_edited_by": {
+    "id": "a1a07517-b528-439d-91d0-50a809b1a23f",
+    "object": "user"
+  },
+  "last_edited_time": "2024-12-20T02:10:00.000Z",
+  "object": "database",
+  "parent": {
+    "type": "workspace",
+    "workspace": true
+  },
+  "properties": {
+    "Created time": {
+      "created_time": {},
+      "id": "GFmP",
+      "name": "Created time",
+      "type": "created_time"
+    },
+    "ID": {
+      "id": "%5EMB%3B",
+      "name": "ID",
+      "type": "unique_id",
+      "unique_id": {
+        "prefix": null
+      }
+    },
+    "Name": {
+      "id": "title",
+      "name": "Name",
+      "title": {},
+      "type": "title"
+    },
+    "Tags": {
+      "id": "dkPy",
+      "multi_select": {
+        "options": [
+          {
+            "color": "orange",
+            "description": null,
+            "id": "1629247a-eb47-48f9-9b80-b805cebfe3f0",
+            "name": "golang"
+          },
+          {
+            "color": "brown",
+            "description": null,
+            "id": "d9555bc8-dc37-494a-8089-1aa2812bec5c",
+            "name": "es"
+          },
+          {
+            "color": "green",
+            "description": null,
+            "id": "8a0db632-4076-41d4-9f69-b7ecd8e8454a",
+            "name": "db"
+          },
+          {
+            "color": "purple",
+            "description": null,
+            "id": "c8078d28-78a2-4ddf-8d81-e049374b4822",
+            "name": "rails"
+          },
+          {
+            "color": "gray",
+            "description": null,
+            "id": "c0636ff8-8742-42c9-b2cd-217706c73c72",
+            "name": "testing"
+          },
+          {
+            "color": "red",
+            "description": null,
+            "id": "13c1afaf-9d05-44f7-90af-6eb2df71dfee",
+            "name": "ci"
+          },
+          {
+            "color": "yellow",
+            "description": null,
+            "id": "bd6acb20-08fa-4fa8-8a80-3039e4bbd71f",
+            "name": "elixir"
+          },
+          {
+            "color": "pink",
+            "description": null,
+            "id": "8b7ff131-89fc-4923-8611-a1b473ea8fee",
+            "name": "notion"
+          },
+          {
+            "color": "blue",
+            "description": null,
+            "id": "bd040904-05ea-4f0f-8355-66e1bb3d10cb",
+            "name": "ops"
+          },
+          {
+            "color": "yellow",
+            "description": null,
+            "id": "1d9880e6-aed3-4997-83a1-4f42ec1cd159",
+            "name": "crypto"
+          },
+          {
+            "color": "default",
+            "description": null,
+            "id": "2c1ae6f5-4843-41b3-84ee-d31e8bf225d1",
+            "name": "site"
+          },
+          {
+            "color": "default",
+            "description": null,
+            "id": "f23fbb6f-ad61-43a7-9c8a-892385a9da1a",
+            "name": "bitcoin"
+          },
+          {
+            "color": "pink",
+            "description": null,
+            "id": "b79cf9e1-0137-4ad6-adc6-9c0327232ec9",
+            "name": "k8s"
+          },
+          {
+            "color": "green",
+            "description": null,
+            "id": "7128fdf9-efa7-486a-9859-ed368cb4f185",
+            "name": "container"
+          },
+          {
+            "color": "red",
+            "description": null,
+            "id": "13e8551d-7585-4bf2-811d-53f9252318fd",
+            "name": "cloud"
+          },
+          {
+            "color": "yellow",
+            "description": null,
+            "id": "5b752399-03bf-4aad-8085-d265e2fecac0",
+            "name": "good"
+          }
+        ]
+      },
+      "name": "Tags",
+      "type": "multi_select"
+    },
+    "URL": {
+      "id": "%25Fz%2F",
+      "name": "URL",
+      "type": "url",
+      "url": {}
+    }
+  },
+  "public_url": "https://shareupme.notion.site/408b771f00ff409e8bcab2c6c609b2a9",
+  "request_id": "bc8fab38-cd47-44c4-be28-fd2690b71372",
+  "title": [
+    {
+      "annotations": {
+        "bold": false,
+        "code": false,
+        "color": "default",
+        "italic": false,
+        "strikethrough": false,
+        "underline": false
+      },
+      "href": null,
+      "plain_text": "ReadingList",
+      "text": {
+        "content": "ReadingList",
+        "link": null
+      },
+      "type": "text"
+    }
+  ],
+  "url": "https://www.notion.so/408b771f00ff409e8bcab2c6c609b2a9"
+}
