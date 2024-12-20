@@ -1,3 +1,5 @@
+# since v1.18+
+IEx.configure(auto_reload: true)
 alias IexHelpers, as: Ih
 import IexHelpers
 

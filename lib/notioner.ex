@@ -7,50 +7,20 @@ defmodule Notioner do
 
   @base_url "https://api.notion.com/v1"
 
-  @doc """
-  todo
-  - how to find all parents?
-  """
-  def get_parents(obj_id, type \\ :page)
+  def all_projects(db_id \\ :run_man_projects) do
+    Notioner.Database.query(db_id)
+    |> get_results()
+    |> Enum.map(fn m ->
+      page_id = get_in(m, ["id"])
 
-  def get_parents(page_id, :page) do
-    get_parent(%{"type" => "page_id", "page_id" => page_id})
+      title_content =
+        get_in(m, ["properties", "Project name", "title", Access.at(0), "text", "content"])
+
+      {title_content, page_id}
+    end)
+    # require "Project name" unique as title!
+    |> Map.new()
   end
-
-  def get_parents(db_id, :db) do
-    get_parent(%{"type" => "database_id", "database_id" => db_id})
-  end
-
-  def get_parent(%{"type" => "database_id", "database_id" => db_id}) do
-    Notioner.Database.get(db_id)
-    |> match_parent()
-    |> Map.fetch!("parent")
-  end
-
-  def get_parent(%{"type" => "page_id", "page_id" => page_id}) do
-    Notioner.Page.get(page_id)
-    |> match_parent()
-    |> Map.fetch!("parent")
-  end
-
-  # this is top case, the end!
-  def get_parent(%{"type" => "workspace", "workspace" => true}), do: nil
-
-  @doc """
-  Friendly handle not found
-  """
-  def match_parent(%{
-        "code" => "object_not_found",
-        "message" => msg,
-        # "message" => "Could not find page with ID: 628fe830-b331-479b-98d1-d21c4b45a529. Make sure the relevant pages and databases are shared with your integration.",
-        "object" => "error",
-        # "request_id" => "6b64f59f-f3a6-421e-b5a4-9efaaeeb974b",
-        "status" => 404
-      }) do
-    raise "#{msg}, open page with link: https://www.notion.so/shareupme/<obj-id> and grant connection!"
-  end
-
-  def match_parent(obj), do: obj
 
   @doc """
   Query tasks as notion-pages
@@ -105,20 +75,50 @@ defmodule Notioner do
     set_task_projects(page_id, project_ids)
   end
 
-  def all_projects(db_id \\ :run_man_projects) do
-    Notioner.Database.query(db_id)
-    |> get_results()
-    |> Enum.map(fn m ->
-      page_id = get_in(m, ["id"])
+  @doc """
+  todo
+  - how to find all parents?
+  """
+  def get_parents(obj_id, type \\ :page)
 
-      title_content =
-        get_in(m, ["properties", "Project name", "title", Access.at(0), "text", "content"])
-
-      {title_content, page_id}
-    end)
-    # require title unique!
-    |> Map.new()
+  def get_parents(page_id, :page) do
+    get_parent(%{"type" => "page_id", "page_id" => page_id})
   end
+
+  def get_parents(db_id, :db) do
+    get_parent(%{"type" => "database_id", "database_id" => db_id})
+  end
+
+  def get_parent(%{"type" => "database_id", "database_id" => db_id}) do
+    Notioner.Database.get(db_id)
+    |> match_parent()
+    |> Map.fetch!("parent")
+  end
+
+  def get_parent(%{"type" => "page_id", "page_id" => page_id}) do
+    Notioner.Page.get(page_id)
+    |> match_parent()
+    |> Map.fetch!("parent")
+  end
+
+  # this is top case, the end!
+  def get_parent(%{"type" => "workspace", "workspace" => true}), do: nil
+
+  @doc """
+  Friendly handle not found
+  """
+  def match_parent(%{
+        "code" => "object_not_found",
+        "message" => msg,
+        # "message" => "Could not find page with ID: 628fe830-b331-479b-98d1-d21c4b45a529. Make sure the relevant pages and databases are shared with your integration.",
+        "object" => "error",
+        # "request_id" => "6b64f59f-f3a6-421e-b5a4-9efaaeeb974b",
+        "status" => 404
+      }) do
+    raise "#{msg}, open page with link: https://www.notion.so/shareupme/<obj-id> and grant connection!"
+  end
+
+  def match_parent(obj), do: obj
 
   ## HTTP Request
 

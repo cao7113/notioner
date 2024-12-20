@@ -11,4 +11,10 @@ defmodule IexHelpers do
     |> File.read!()
     |> Jason.decode!()
   end
+
+  def config do
+    IEx.configuration()
+  end
+
+  ## todo how trigger fmt in iex session
 end

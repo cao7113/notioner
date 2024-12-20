@@ -1,6 +1,9 @@
 defmodule Notioner.Database do
   @moduledoc """
   Notion database
+
+  todo:
+  - total rows count
   """
 
   # NOTE: databases should shared with integration!
@@ -15,14 +18,19 @@ defmodule Notioner.Database do
     |> Map.get(:body)
   end
 
-  def query(db_id \\ get_db_id(), req_body \\ %{}) do
+  @doc """
+  Get human friendly db schema info
+  """
+  def schema_info(db_id \\ get_db_id()) do
+    # todo
+  end
+
+  def query(db_id \\ get_db_id(), req_body \\ %{page_size: 10}) do
     db_id = get_db_id(db_id)
 
     Notioner.req_post!("/databases/#{db_id}/query?filter_properties=title", json: req_body)
     |> Map.get(:body)
   end
-
-
 
   def get_db_id(_db_id \\ :run_man_tasks)
   def get_db_id(id) when is_atom(id), do: granted_databases() |> Map.get(id)
