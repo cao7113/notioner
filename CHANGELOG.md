@@ -5,6 +5,19 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.1.2](https://github.com/cao7113/notioner/compare/v0.1.1...v0.1.2) (2024-12-24)
+
+
+
+
+### Bug Fixes:
+
+* format
+
+### Improvements:
+
+* add ci and hex-publish and git-ops types task
+
 ## [v0.1.0](https://github.com/cao7113/notioner/compare/v0.1.0...v0.1.0) (2024-12-24)
 
 

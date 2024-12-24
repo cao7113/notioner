@@ -15,7 +15,7 @@ by adding `notioner` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:notioner, "~> 0.1.1"}
+    {:notioner, "~> 0.1.2"}
   ]
 end
 ```
