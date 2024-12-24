@@ -6,6 +6,7 @@ Notion Data Helper through Notion RESTful API https://developers.notion.com/refe
 
 - Get a integration and its access token, e.g. data-helper
 - Grant Notion Pages or Database to above integeration
+- config env: `NOTIONER_ACCESS_TOKEN`
 
 ## Installation
 
