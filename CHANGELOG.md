@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.1.5](https://github.com/cao7113/notioner/compare/v0.1.4...v0.1.5) (2024-12-24)
+
+
+
+
+### Bug Fixes:
+
+* missing ex_doc during publish hex package
+
 ## [v0.1.4](https://github.com/cao7113/notioner/compare/v0.1.3...v0.1.4) (2024-12-24)
 
 
