@@ -37,7 +37,8 @@ defmodule Notioner.MixProject do
     [
       {:req, "~> 0.5.8"},
       {:bandit, "~> 1.0", only: [:test]},
-      {:git_ops, "~> 2.6.1", only: [:dev]}
+      {:git_ops, "~> 2.6.1", only: [:dev]},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
