@@ -22,7 +22,11 @@ tasks:
   pub-docs: mix hex.publish docs --yes
 
   ## Git ops
-  cmt: mix test && mix git_ops.release --yes && git push --follow-tags
+  cmt: |
+    mix format
+    mix test
+    mix git_ops.release --yes 
+    git push --follow-tags
   app-info: mix git_ops.project_info
   init-release: mix git_ops.release --initial
   ops-types: |

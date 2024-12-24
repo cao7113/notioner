@@ -41,17 +41,17 @@ defmodule Notioner.MixProject do
     ]
   end
 
-    # hex package metadata as https://hex.pm/docs/publish
-    def package do
-      [
-        # This option is only needed when you don't want to use the OTP application name
-        licenses: ["Apache-2.0"],
-        maintainers: ["cao7113"],
-        links: %{
-          "GitHub" => @source_url,
-          "Docs" => "https://hexdocs.pm/notioner"
-        },
-        files: ["lib", "config", "mix.exs", "README.md", "CHANGELOG.md"],
-      ]
-    end
+  # hex package metadata as https://hex.pm/docs/publish
+  def package do
+    [
+      # This option is only needed when you don't want to use the OTP application name
+      licenses: ["Apache-2.0"],
+      maintainers: ["cao7113"],
+      links: %{
+        "GitHub" => @source_url,
+        "Docs" => "https://hexdocs.pm/notioner"
+      },
+      files: ["lib", "config", "mix.exs", "README.md", "CHANGELOG.md"]
+    ]
+  end
 end
