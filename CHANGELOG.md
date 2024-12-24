@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.1.4](https://github.com/cao7113/notioner/compare/v0.1.3...v0.1.4) (2024-12-24)
+
+
+
+
+### Bug Fixes:
+
+* NOTIONER_ACCESS_TOKEN config
+
 ## [v0.1.3](https://github.com/cao7113/notioner/compare/v0.1.2...v0.1.3) (2024-12-24)
 
 
