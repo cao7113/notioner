@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.1.6](https://github.com/cao7113/notioner/compare/v0.1.5...v0.1.6) (2024-12-24)
+
+
+
+
+### Bug Fixes:
+
+* iex and demo test
+
 ## [v0.1.5](https://github.com/cao7113/notioner/compare/v0.1.4...v0.1.5) (2024-12-24)
 
 
