@@ -7,12 +7,26 @@ tasks:
   fmt: mix format
   test-all: |
     mix test --include external
-  
+
   users: |
     curl 'https://api.notion.com/v1/users' \
       -H 'Authorization: Bearer '"$NOTIONER_ACCESS_TOKEN"'' \
       -H "Notion-Version: 2022-06-28" | jq
 
+  pub:
+    desc: publish hex package
+    cmds:
+      - mix hex.publish --yes --replace
+    env:
+      # HEX_API_KEY: $HEX_API_KEY
+  pub-docs: mix hex.publish docs --yes
+
+  ## Git ops
+  cmt: mix test && mix git_ops.release --yes && git push --follow-tags
+  app-info: mix git_ops.project_info
+  init-release: mix git_ops.release --initial
+  ops-types: |
+    mix run -e "GitOps.Config.types()|>IO.inspect(pretty: true)"
+
   setup: |
     mix setup
-

@@ -1,7 +1,8 @@
 defmodule Notioner.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
+  @source_url "https://github.com/cao7113/notioner"
 
   def project do
     [
@@ -10,7 +11,11 @@ defmodule Notioner.MixProject do
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
-      deps: deps()
+      deps: deps(),
+      description: "daily mix helper tasks",
+      source_url: @source_url,
+      homepage_url: @source_url,
+      package: package()
     ]
   end
 
@@ -35,4 +40,18 @@ defmodule Notioner.MixProject do
       {:git_ops, "~> 2.6.1", only: [:dev]}
     ]
   end
+
+    # hex package metadata as https://hex.pm/docs/publish
+    def package do
+      [
+        # This option is only needed when you don't want to use the OTP application name
+        licenses: ["Apache-2.0"],
+        maintainers: ["cao7113"],
+        links: %{
+          "GitHub" => @source_url,
+          "Docs" => "https://hexdocs.pm/notioner"
+        },
+        files: ["lib", "config", "mix.exs", "README.md", "CHANGELOG.md"],
+      ]
+    end
 end
