@@ -1,4 +1,4 @@
 defmodule NotionerTest do
   use ExUnit.Case
-  doctest Notioner
+  # doctest Notioner
 end

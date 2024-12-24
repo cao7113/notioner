@@ -11,4 +11,8 @@ defmodule IexHelpers do
     |> File.read!()
     |> Jason.decode!()
   end
+
+  def iex_config do
+    IEx.configuration()
+  end
 end

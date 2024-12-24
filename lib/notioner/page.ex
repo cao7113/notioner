@@ -1,11 +1,15 @@
 defmodule Notioner.Page do
   @moduledoc """
-  Page query
+  Notion Pages
   https://developers.notion.com/reference/intro#pagination
   """
 
   @page_title_property_id "title"
 
+  @doc """
+  Retrieve a page
+  https://developers.notion.com/reference/retrieve-a-page
+  """
   def get(page_id \\ get_page_id()) do
     page_id = get_page_id(page_id)
 
@@ -13,6 +17,12 @@ defmodule Notioner.Page do
     |> Map.get(:body)
   end
 
+  @doc """
+  Retrieve a page property item
+  https://developers.notion.com/reference/retrieve-a-page-property
+
+  NOTE: property_id can be property id or key name
+  """
   def get_property(page_id \\ get_page_id(), property_id \\ @page_title_property_id) do
     page_id = get_page_id(page_id)
 

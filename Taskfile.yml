@@ -1,8 +1,8 @@
 # https://taskfile.dev/usage/
 version: '3'
 tasks:
-  default: mix format && mix test
-  sh: mix format && iex --erl "-kernel shell_history enabled" -S mix
+  default: mix test
+  sh: iex --erl "-kernel shell_history enabled" -S mix
   run: iex --erl "-kernel shell_history enabled" -S mix phx.server
   fmt: mix format
   test-all: |

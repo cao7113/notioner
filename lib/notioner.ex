@@ -5,7 +5,73 @@ defmodule Notioner do
 
   alias Notioner.ReqClient
 
-  @base_url "https://api.notion.com/v1"
+  def all_projects(db_id \\ :runner_projects) do
+    Notioner.Database.query(db_id)
+    |> get_results()
+    |> Enum.map(fn m ->
+      page_id = get_in(m, ["id"])
+
+      title_content =
+        get_in(m, ["properties", "Project name", "title", Access.at(0), "text", "content"])
+
+      {title_content, page_id}
+    end)
+    # require "Project name" unique as title!
+    |> Map.new()
+  end
+
+  @doc """
+  Query tasks as notion-pages
+  """
+  def query_tasks(task_name_part, opts \\ []) do
+    db_id = opts[:db_id] || :runner_tasks
+    page_size = opts[:page_size] || 10
+
+    req_body = %{
+      filter: %{
+        property: "Task name",
+        title: %{
+          contains: task_name_part
+        }
+      },
+      page_size: page_size
+    }
+
+    Notioner.Database.query(db_id, req_body)
+    |> get_results()
+    |> Enum.map(fn m ->
+      page_id = get_in(m, ["id"])
+
+      title_content =
+        get_in(m, ["properties", "Task name", "title", Access.at(0), "text", "content"])
+
+      {page_id, title_content}
+    end)
+  end
+
+  def set_task_projects(page_id, project_ids) when is_list(project_ids) do
+    page_id = Notioner.Page.get_page_id(page_id)
+
+    properties = %{
+      "Project" => %{
+        "relation" => project_ids |> Enum.map(fn id -> %{id: id} end)
+      }
+    }
+
+    req_patch!("/pages/#{page_id}", json: %{properties: properties})
+  end
+
+  @doc """
+  iex>
+
+    Notioner.set_task_project_names :test_task, ["Plan"]
+  """
+  def set_task_project_names(page_id, project_names, projects \\ all_projects())
+      when is_list(project_names) and is_map(projects) do
+    project_ids = projects |> Map.take(project_names) |> Map.values()
+
+    set_task_projects(page_id, project_ids)
+  end
 
   @doc """
   todo
@@ -52,74 +118,6 @@ defmodule Notioner do
 
   def match_parent(obj), do: obj
 
-  @doc """
-  Query tasks as notion-pages
-  https://developers.notion.com/reference/post-database-query
-  """
-  def query_tasks(task_name_part, opts \\ []) do
-    db_id = opts[:db_id] || :run_man_tasks
-    # max 100
-    page_size = opts[:page_size] || 10
-
-    req_body = %{
-      filter: %{
-        property: "Task name",
-        title: %{
-          contains: task_name_part
-        }
-      },
-      page_size: page_size
-    }
-
-    Notioner.Database.query(db_id, req_body)
-    |> get_results()
-    |> Enum.map(fn m ->
-      page_id = get_in(m, ["id"])
-
-      title_content =
-        get_in(m, ["properties", "Task name", "title", Access.at(0), "text", "content"])
-
-      {page_id, title_content}
-    end)
-  end
-
-  def set_task_projects(page_id, project_ids) when is_list(project_ids) do
-    page_id = Notioner.Page.get_page_id(page_id)
-
-    properties = %{
-      "Project" => %{
-        "relation" => project_ids |> Enum.map(fn id -> %{id: id} end)
-      }
-    }
-
-    req_patch!("/pages/#{page_id}", json: %{properties: properties})
-  end
-
-  @doc """
-  iex> Notioner.set_task_project_names :test_task, ["Plan"]
-  """
-  def set_task_project_names(page_id, project_names, projects \\ all_projects())
-      when is_list(project_names) and is_map(projects) do
-    project_ids = projects |> Map.take(project_names) |> Map.values()
-
-    set_task_projects(page_id, project_ids)
-  end
-
-  def all_projects(db_id \\ :run_man_projects) do
-    Notioner.Database.query(db_id)
-    |> get_results()
-    |> Enum.map(fn m ->
-      page_id = get_in(m, ["id"])
-
-      title_content =
-        get_in(m, ["properties", "Project name", "title", Access.at(0), "text", "content"])
-
-      {title_content, page_id}
-    end)
-    # require title unique!
-    |> Map.new()
-  end
-
   ## HTTP Request
 
   def req_get!(path, opts \\ []),
@@ -137,15 +135,6 @@ defmodule Notioner do
   end
 
   def default_opts() do
-    [
-      base_url: @base_url,
-      headers: [
-        accept: "application/json",
-        # https://www.notion.so/profile/integrations/internal/58e2844c-d10d-4fe6-b161-29f299e014a3
-        Authorization: "Bearer #{System.get_env("NOTIONER_ACCESS_TOKEN")}",
-        # https://developers.notion.com/reference/versioning
-        "Notion-Version": "2022-06-28"
-      ]
-    ]
+    Application.get_env(:notioner, :notion_req_options, [])
   end
 end

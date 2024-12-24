@@ -4,8 +4,8 @@ defmodule Notioner.ReqClient do
   Custom Req Client based on Req & Finch & Mint
 
   todo:
-  - disable proxy when need
   - split into hex package: req-helper
+  - disable proxy when need
 
   - Req high level API, user friendly, maintained actively, with great STEPs!
     https://github.com/wojtekmach/req

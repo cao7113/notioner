@@ -1,6 +1,6 @@
 # Notioner 
 
-Notion Data Helper
+Notion Data Helper through Notion RESTful API https://developers.notion.com/reference/intro
 
 ## How to used this package?
 

@@ -7,7 +7,7 @@ defmodule Notioner.User do
   Get notion users
   https://developers.notion.com/reference/get-users
   """
-  def get_users() do
+  def all() do
     Notioner.req_get!("/users")
     |> Map.get(:body)
   end
