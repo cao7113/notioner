@@ -25,3 +25,4 @@ notioner-*.tar
 .env*
 .lexical
 .elixir-tools
+notion-sdk-js

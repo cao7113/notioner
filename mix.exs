@@ -12,7 +12,7 @@ defmodule Notioner.MixProject do
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
-      description: "daily mix helper tasks",
+      description: "Notion data helper",
       source_url: @source_url,
       homepage_url: @source_url,
       package: package()

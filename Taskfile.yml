@@ -6,7 +6,12 @@ tasks:
   run: iex --erl "-kernel shell_history enabled" -S mix phx.server
   fmt: mix format
   test-all: |
-    mix test --include external
+    mix test # --include external
+    task test-demo
+  test-demo:
+    dir: demo
+    cmds: 
+    - mix test
 
   users: |
     curl 'https://api.notion.com/v1/users' \
